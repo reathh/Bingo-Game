@@ -3,15 +3,15 @@ window.onload = function () {
     var numbersInColumns = [];
     var generatedNumbers = [];
     var startGame;
+    var speed = 4000;
     //Get All columns
     var col1 = $(".col1");
     var col2 = $(".col2");
     var col3 = $(".col3");
     var col4 = $(".col4");
     var col5 = $(".col5");
-    //Get current combination rows
-    var alphabetCol = $("#alphabet");
-    var numberCol = $("#number");
+    //Get generator div
+    var generator = $("#generator");
     //Get buttons
     var startButton = $("#start");
     var bingo = $("#bingo");
@@ -19,9 +19,6 @@ window.onload = function () {
     var alphabets = ["B", "I", "N", "G", "O"];
     var alphabet;
     var number;
-
-    //Generate numbers for each col
-    generateNumbersCols(col1, col2, col3, col4, col5);
 
 
     $(col1).add(col2).add(col3).add(col4).add(col5).click(function () {
@@ -33,16 +30,20 @@ window.onload = function () {
     });
 
     startButton.click(function () {
-        started = true;
-        alphabetCol.text("");
-        numberCol.text("");
+        numbersInColumns = [];
+        generatedNumbers = [];
+        generator.text("");
+        //Generate numbers in cols
+        generateNumbersCols();
         //Generate current combination
         generateCurrentCombination();
-        startGame = setInterval(function () {
-            generateCurrentCombination();
-        }, 2000);
+        if (!started) {
+            startGame = setInterval(function () {
+                generateCurrentCombination();
+            }, speed);
+        }
         startButton.text("Start new game");
-        startButton.hide();
+        started = true;
     });
 
     bingo.click(function () {
@@ -91,6 +92,7 @@ window.onload = function () {
     }
 
     function generateCurrentCombination() {
+        if (generatedNumbers.length < 15) {
             alphabet = alphabets[random(0, alphabets.length - 1)];
             if (alphabet == "B") {
                 do {
@@ -123,8 +125,13 @@ window.onload = function () {
                 generatedNumbers.push(number);
             }
 
-            alphabetCol.append('<td class="alphabet">' + alphabet + '</td>');
-            numberCol.append('<td class="number">' + number + '</td>')
+            generator.append('<div class="alphabet">' + alphabet + '<div class="number">' + number + '</div></div>');
+            if (generatedNumbers.length % 10 == 0) {
+                generator.append('<br>');
+            }
+        } else {
+            clearInterval(startGame);
+        }
     }
 
 
