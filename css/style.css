@@ -1,0 +1,31 @@
+#card td {
+	border: 1px solid black;
+}
+td {
+	text-align: center;
+	width: 50px;
+	height: 50px;
+}
+td:not(.alphabets) {
+	background-color: yellow;
+}
+.alphabets {
+	color: red;
+}
+#card, #generator {
+	display:inline-block;
+
+}
+#generator {
+	vertical-align: top;
+	margin: 15px;
+}
+.clicked {
+    color: red;
+    border: 2px dotted red !important;
+    border-radius: 20px;
+}
+#alphabet td, #number td {
+    border: 2px dashed deeppink;
+    border-radius: 50px;
+}
