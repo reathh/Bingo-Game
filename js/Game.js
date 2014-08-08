@@ -223,7 +223,7 @@ window.onload = function () {
         for (var i = 1; i <= 75; i++) {
             allNumbers.push(i);
         }
-        generatedNumbers = allNumbers;
+        //generatedNumbers = allNumbers;
         var bingo = false;
         for (var i = 1; i <= numberCards; i++) {
             var numberCols = $("#card" + i + " tr:first").children().length;
