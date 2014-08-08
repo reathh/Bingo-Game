@@ -53,6 +53,10 @@ td:not(.alphabets), .alphabet, .number {
 /* ////////// Generator ///////// */
 
 /* Buttons and Inputs */
+#bingos span {
+    color: red;
+    font-weight: bold;
+}
 #play-buttons {
     margin-bottom: 10px;
 }

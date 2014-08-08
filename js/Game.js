@@ -232,7 +232,6 @@ window.onload = function () {
                     if (k == 1) { // We are checking for horizontal bingo
                         var horizontal = true;
                         var currCol = $("#card" + i + " tr:eq(" + j + ")").children().not(".asterisk");
-                        console.log(currCol);
                     }
                     else if (k == 2) { // We are checking for vertical bingo
                         var vertical = true;
